@@ -1,0 +1,63 @@
+.card {
+  @apply bg-white rounded-[20px] w-[750px] h-[500px];
+}
+
+.cardWrapper {
+  @apply w-full h-full p-5 flex;
+}
+
+.cardForm {
+  @apply flex flex-col;
+}
+
+.cardForm,
+.cardImage {
+  @apply basis-1/2;
+}
+
+.cardForm h2 {
+  @apply text-[45px] font-bold mt-11;
+}
+
+.cardForm h2 + span {
+  @apply mb-4 mt-2 text-xs;
+}
+
+.cardFormWrapper {
+  @apply w-full pl-5 pr-10;
+}
+
+.features {
+  @apply flex flex-col gap-2 mt-3;
+}
+
+.features span {
+  @apply translate-x-7 relative text-sm;
+}
+
+.features span::before {
+  content: "";
+  background-image: url("../public/icon-success.svg");
+  @apply absolute bg-[#ff645b] rounded-full bg-no-repeat bg-center bg-contain w-4 h-4 left-[-28px] top-[50%] translate-y-[-50%];
+}
+
+.cardForm .form {
+  @apply flex flex-col justify-center items-start mt-6;
+}
+
+.cardForm .form label {
+  @apply text-[10px] font-bold mb-1;
+}
+
+.cardForm .form input {
+  @apply border-[#c5c5c5] border rounded outline-none w-full h-9 pl-3 text-xs hover:border-[#000] focus:border-[#000] cursor-pointer;
+}
+
+.cardForm .form button {
+  @apply bg-[#232742] text-white font-bold text-xs w-full h-9 rounded mt-5 bg-gradient-to-r hover:from-[#ff5076] hover:to-[#fe6738];
+}
+
+.cardImage .ImageWrapper {
+  background-image: url("../public/illustration-sign-up-desktop.svg");
+  @apply w-full h-full bg-cover bg-no-repeat bg-center rounded-xl;
+}
