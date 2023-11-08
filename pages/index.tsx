@@ -1,5 +1,5 @@
 import styles from "@/styles/Home.module.css";
-import { useState, createContext } from "react";
+import { useState, createContext, SetStateAction, Dispatch } from "react";
 import SubscribeCard from "./components/SubscribeCard";
 import ThanksCard from "./components/ThanksCard";
 
@@ -7,7 +7,17 @@ interface userInter {
   email: String;
 }
 
-export const UserContext = createContext({});
+interface UserContextInter {
+  user: userInter;
+  setUser: Dispatch<SetStateAction<userInter>>;
+}
+
+export const UserContext = createContext<UserContextInter>({
+  user: { email: "" },
+  setUser: function (_value: SetStateAction<userInter>): void {
+    throw new Error("Function not implemented.");
+  },
+});
 
 export default function Home() {
   const [user, setUser] = useState<userInter>({
