@@ -1,0 +1,42 @@
+.card {
+  @apply bg-white h-[350px] w-[350px] rounded-[20px] flex flex-col items-center justify-start;
+}
+
+.cardWrapper {
+  @apply p-10 pt-8;
+}
+
+.icon {
+  background-image: url("../public/icon-success.svg");
+  @apply bg-no-repeat bg-contain bg-center h-12 w-12 mb-5;
+}
+
+.card h3 {
+  @apply text-[40px] font-bold leading-10 mb-5;
+}
+
+.card p {
+  @apply text-xs;
+}
+
+.card button {
+  @apply bg-[#232742] outline-none w-full h-9 text-white font-bold rounded-md mt-7 text-xs tracking-wide bg-gradient-to-r hover:from-[#ff5076] hover:to-[#fe6738];
+}
+
+@media (max-width: 820px) {
+  .card {
+    @apply w-full h-full pt-[130px];
+  }
+
+  .card h3 {
+    @apply text-[30px];
+  }
+
+  .icon {
+    @apply h-[60px] w-[60px] mb-8;
+  }
+
+  .card button {
+    @apply absolute bottom-9 left-[50%] translate-x-[-50%] w-[85%] h-12 text-sm;
+  }
+}

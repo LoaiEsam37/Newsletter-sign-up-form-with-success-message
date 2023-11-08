@@ -1,8 +1,29 @@
 import styles from "@/styles/SubscribeCard.module.css";
-import { useState } from "react";
-import Image from "next/image";
+import { useContext } from "react";
+import { UserContext } from "../index";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
+
+const schema = Yup.object().shape({
+  email: Yup.string()
+    .email("Vaild Email Required")
+    .required("Vaild Email Required"),
+});
 
 export default function SubscribeCard() {
+  const { setUser } = useContext(UserContext);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+  const onSubmitHandler = (data: any) => {
+    setUser({ email: data.email });
+  };
   return (
     <div className={styles.card}>
       <div className={styles.cardWrapper}>
@@ -17,10 +38,27 @@ export default function SubscribeCard() {
               <span>Measuring to ensure updates are a success</span>
               <span>And much more!</span>
             </div>
-            <form className={styles.form}>
-              <label>Email address</label>
-              <input type="text" placeholder="email@company.com" />
-              <button type="submit">Subscribe to monthly newsletter</button>
+            <form
+              className={styles.form}
+              onSubmit={handleSubmit(onSubmitHandler)}
+            >
+              <div className={"flex justify-between items-center w-full mb-1"}>
+                <label>Email address</label>
+                <span className={styles.errorMessage}>
+                  {errors.email?.message}
+                </span>
+              </div>
+              <input
+                {...register("email")}
+                type="text"
+                placeholder="email@company.com"
+                className={`${
+                  errors.email?.message ? styles.errorInputStyle : ""
+                }`}
+              />
+              <button type="submit" onSubmit={onSubmitHandler}>
+                Subscribe to monthly newsletter
+              </button>
             </form>
           </div>
         </div>

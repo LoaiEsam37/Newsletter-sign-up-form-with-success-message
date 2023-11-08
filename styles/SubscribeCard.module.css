@@ -46,7 +46,7 @@
 }
 
 .cardForm .form label {
-  @apply text-[10px] font-bold mb-1;
+  @apply text-[10px] font-bold;
 }
 
 .cardForm .form input {
@@ -57,7 +57,42 @@
   @apply bg-[#232742] text-white font-bold text-xs w-full h-9 rounded mt-5 bg-gradient-to-r hover:from-[#ff5076] hover:to-[#fe6738];
 }
 
+.cardForm .errorMessage {
+  @apply text-[#d16e69] text-[10px] font-bold;
+}
+
 .cardImage .ImageWrapper {
   background-image: url("../public/illustration-sign-up-desktop.svg");
   @apply w-full h-full bg-cover bg-no-repeat bg-center rounded-xl;
+}
+
+.cardForm .form input.errorInputStyle {
+  @apply border-[#c27b77] bg-[#ffe8e6] text-[#de7c79];
+}
+
+@media (max-width: 820px) {
+  .card {
+    @apply h-screen w-screen;
+  }
+  .cardWrapper {
+    @apply flex-col-reverse p-0;
+  }
+
+  .cardImage .ImageWrapper {
+    background-image: url("../public/illustration-sign-up-mobile.svg");
+    @apply h-full max-h-[400px];
+  }
+
+  .card h2 {
+    @apply text-[30px] mt-0;
+  }
+
+  .cardForm .form input,
+  .cardForm .form button {
+    @apply h-12 rounded-lg text-sm;
+  }
+
+  .cardForm .form input {
+    @apply pl-5;
+  }
 }
